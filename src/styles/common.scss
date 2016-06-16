@@ -1,7 +1,52 @@
-body {
-  width: 500px;
+@import 'variables';
 
-  a {
-    color: tomato;
-  }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 5vh 0 10vh;
+}
+
+.card {
+  max-width: 960px;
+  width: 80vw;
+  min-width: 600px;
+  height: 60vh;
+  min-height: 600px;
+  margin: auto;
+  border: 1px solid $border-color;
+  box-shadow: 0px 32px 113px -11px rgba(0,0,0,0.37);
+}
+
+.clients-list,
+.client-content {
+  height: 100%;
+  float: left;
+}
+
+.clients-list {
+  width: 30%;
+  background: yellow;
+  border-right: 1px solid $border-color;
+}
+
+.client-content {
+  width: calc(70% - 1px);
+  background: pink;
+}
+
+.client-search {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid $border-color;
 }

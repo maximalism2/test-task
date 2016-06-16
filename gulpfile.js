@@ -12,6 +12,7 @@ var scsslint = require('gulp-scss-lint');
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./webpack.config');
+var path = require('path');
 var webpackProductionConfig = require('./webpack.production.config');
 
 const lintScss = [
@@ -65,7 +66,7 @@ gulp.task('webpack-dev-server', (cb) => {
   let compiler = webpack(webpackConfig);
   new webpackDevServer(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    contentBase: __dirname,
+    contentBase: path.resolve(__dirname, './dist'),
     hot: true,
     historyApiFallback: true,
     stats: {
@@ -77,7 +78,7 @@ gulp.task('webpack-dev-server', (cb) => {
         bypass: function(req, res, proxyOptions) {
           if (req.headers.accept.indexOf('html') !== -1) {
             console.log('Skipping proxy for browser request. /*');
-            return '/dist/index.html';
+            return `/index.html`;
           }
         }
       }

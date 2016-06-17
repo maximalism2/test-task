@@ -1,0 +1,73 @@
+.client-content {
+  box-sizing: border-box;
+  padding: 3rem 4rem;
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    margin: 2rem 0 1rem;
+  }
+
+  .cols {
+    &::after {
+      display: block;
+      clear: both;
+    }
+  }
+
+  .col {
+    width: 50%;
+    float: left;
+    display: inline-block;
+  }
+
+  .desc {
+    color: $light-text-color;
+  }
+
+  .desc-value {
+    color: $text-color;
+  }
+
+  .general-info {
+    margin-bottom: .5rem;
+    position: relative;
+    height: 128px;
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .avatar {
+      float: right;
+    }
+
+   .client-name {
+      color: $text-color;
+      margin-top: 0;
+      position: absolute;
+    }
+
+
+    .company-info {
+      position: absolute;
+      bottom: 0;
+
+      .company {
+        margin: 0;
+      }
+    }
+  }
+
+  .contacts {
+    margin-top: 1rem;
+
+
+  }
+}

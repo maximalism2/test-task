@@ -1,4 +1,8 @@
 @import 'variables';
+@import 'spinner';
+@import 'client_list';
+@import 'client_data';
+
 
 html,
 body {
@@ -7,6 +11,11 @@ body {
 
 body {
   margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  // background: linear-gradient(to left, #0099F7 , #F11712);
+  background: #4DA0B0;
+  background: linear-gradient(to left, #4DA0B0 , #D39D38);
 }
 
 .wrapper {
@@ -23,30 +32,41 @@ body {
   min-height: 600px;
   margin: auto;
   border: 1px solid $border-color;
-  box-shadow: 0px 32px 113px -11px rgba(0,0,0,0.37);
+  box-shadow: 0px 49px 162px 18px rgba(0, 0, 0, 0.5);
+  background: white;
 }
 
 .clients-list,
 .client-content {
   height: 100%;
   float: left;
+  position: relative;
+  overflow: auto;
 }
 
 .clients-list {
   width: 30%;
-  background: yellow;
   border-right: 1px solid $border-color;
 }
 
 .client-content {
   width: calc(70% - 1px);
-  background: pink;
 }
 
-.client-search {
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  border: 0;
-  border-bottom: 1px solid $border-color;
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0,0,0,.12);
+    transition: .2s;
+
+    &:hover {
+      background: rgba(0,0,0,.2);
+    }
 }

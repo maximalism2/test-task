@@ -1,0 +1,29 @@
+.client-search {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  color: $text-color;
+}
+
+.centered {
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 2rem);
+  width: 100%;
+
+  p {
+    margin: 0  0 .5rem;
+    color: $light-text-color;
+  }
+
+  .get-clients {
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

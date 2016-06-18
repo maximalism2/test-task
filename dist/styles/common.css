@@ -65,7 +65,7 @@
   height: calc(100% - 36px);
   overflow: auto; }
   .list-of-clients .client-item {
-    height: 75px;
+    min-height: 75px;
     padding: .1px;
     border-bottom: 1px solid #eee;
     cursor: pointer; }
@@ -76,6 +76,8 @@
       clear: both; }
     .list-of-clients .client-item.choosed {
       background: #f8f8f8; }
+    .list-of-clients .client-item.focused {
+      background: #fafafa; }
   .list-of-clients .photo-box {
     width: 30%;
     height: 100%;
@@ -95,6 +97,14 @@
       font-size: .8rem;
       color: #aaa;
       margin: 0; }
+  .list-of-clients .matches {
+    background: #fff336; }
+  .list-of-clients .search-result {
+    color: #444;
+    font-size: .8rem;
+    margin: 0; }
+    .list-of-clients .search-result .in-field {
+      color: #aaa; }
 
 .error {
   color: #d00606; }

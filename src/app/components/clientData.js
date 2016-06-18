@@ -19,8 +19,6 @@ class ClientData extends Component {
     let { clientData } = this.props;
     let { general, job, address, contact } = clientData.data;
 
-    console.log(this.props);
-
     let mapCNames = cnames({
       "client-location-map": 1,
       "map-error": clientData.mapUrlError

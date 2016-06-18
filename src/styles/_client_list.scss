@@ -38,7 +38,7 @@
   overflow: auto;
 
   .client-item {
-    height: 75px;
+    min-height: 75px;
     padding: .1px;
     border-bottom: 1px solid $border-color;
     cursor: pointer;
@@ -54,6 +54,10 @@
 
     &.choosed {
       background: #f8f8f8;
+    }
+
+    &.focused {
+      background: #fafafa;
     }
   }
 
@@ -79,10 +83,24 @@
       margin-bottom: .5rem;
     }
 
-    .job-title {
+    .job-title, {
       font-size: .8rem;
       color: $light-text-color;
       margin: 0;
+    }
+  }
+
+  .matches {
+    background: $yellow;
+  }
+
+  .search-result {
+    color: $text-color;
+    font-size: .8rem;
+    margin: 0;
+    
+    .in-field {
+      color: $light-text-color;
     }
   }
 }

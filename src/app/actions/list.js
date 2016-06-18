@@ -3,7 +3,10 @@ import {
   GETING_LOADING,
   GETING_CLIENT_LIST_ERROR,
   CHOOSE_CLIENT,
-  SEARCH_CLIENT_BY
+  RESET_CHOOSED_CLIENT,
+  SEARCH_CLIENT_BY,
+  RESET_SEARCH,
+  MAKE_FOCUSED
 } from '../consts/list';
 
 import { read } from '../helpers/fetch/';
@@ -45,4 +48,22 @@ export const getList = () => async dispatch => {
 export const chooseClient = client => ({
   type: CHOOSE_CLIENT,
   client
+});
+
+export const resetChoosedClient = () => ({
+  type: RESET_CHOOSED_CLIENT
+});
+
+export const search = query => ({
+  type: SEARCH_CLIENT_BY,
+  query
+});
+
+export const resetSearch = () => ({
+  type: RESET_SEARCH
+});
+
+export const makeFocused = id => ({
+  type: MAKE_FOCUSED,
+  id
 });

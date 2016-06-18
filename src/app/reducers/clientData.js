@@ -29,7 +29,7 @@ import {
 } from '../consts/clientData';
 
 import {
-  CHOOSE_CLIENT
+  CHOOSE_CLIENT, RESET_CHOOSED_CLIENT
 } from '../consts/list';
 
 export default function clientData(state = initialDataStructure, action) {
@@ -38,6 +38,9 @@ export default function clientData(state = initialDataStructure, action) {
       return Object.assign({}, state, {
         data: action.client
       });
+    }
+    case RESET_CHOOSED_CLIENT: {
+      return Object.assign({}, state, initialDataStructure);
     }
     case CREATE_MAP_URL: {
       return Object.assign({}, state, {

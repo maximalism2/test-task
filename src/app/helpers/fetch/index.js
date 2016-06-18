@@ -45,6 +45,19 @@ export function read(url) {
     });
 }
 
+
+// Get method without any headers
+export function readSimple(url) {
+  return fetch(url, {
+    method: 'get'
+  }).then(response => {
+    return response;
+  }).catch(err => {
+    console.error('Simple fetching error', new Error(err));
+    return err;
+  });
+}
+
 /**
  * HTTP POST
  * @param  {string} url

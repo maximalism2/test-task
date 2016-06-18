@@ -42,7 +42,7 @@ export const getList = () => async dispatch => {
   }
 }
 
-export const chooseClient = id => ({
+export const chooseClient = client => ({
   type: CHOOSE_CLIENT,
-  id
+  client
 });

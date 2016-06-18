@@ -1,33 +1,50 @@
 import React, { Component, PropTypes } from 'react';
+import cnames from 'classnames';
 
 class ClientData extends Component {
   mapLoadingError(e) {
     console.log('map erorr', e);
   }
 
-  render() {
-    let { clientData } = this.props;
-    if (clientData.mapUrl === null) {
-      this.mapLoadingError('map cannot be loaded');
+  componentWillReceiveProps(nextProps) {
+    let currentId = this.props.clientData.data.id;
+    let nextId = nextProps.clientData.data.id;
+    if (nextId !== currentId && nextId !== null) {
+      let { address } = nextProps.clientData.data;
+      this.props.createMapUrl(address.street, address.city, address.country);
     }
+  }
+
+  renderData() {
+    let { clientData } = this.props;
+    let { general, job, address, contact } = clientData.data;
+
+    console.log(this.props);
+
+    let mapCNames = cnames({
+      "client-location-map": 1,
+      "map-error": clientData.mapUrlError
+    });
 
     return (
       <div>
         <div className="general-info">
           <img
-            src="https://s3.amazonaws.com/uifaces/faces/twitter/kevinoh/128.jpg"
+            src={general.avatar}
             className="avatar"
           />
-          <h1 className="client-name">Liana Crooks</h1>
+          <h1 className="client-name">
+            {`${general.firstName} ${general.lastName}`}
+          </h1>
 
           <div className="company-info">
             <p className="job-title">
               <span className="desc">Job position: </span>
-              {"Investor Functionality Coordinator"}
+              <span className="desc-value">{job.title}</span>
             </p>
             <p className="company">
               <span className="desc">Company: </span>
-              {"Ledner, Johnson and Predovic"}
+              <span className="desc-value">{job.company}</span>
             </p>
           </div>
         </div>
@@ -37,18 +54,17 @@ class ClientData extends Component {
           <p>
             <span className="desc">Email: </span>
             <a
-              href="mailto://Gerry_Hackett77@gmail.com"
+              href={`mailto://${contact.email}`}
               target="_blank"
               className="desc-value mail"
-            >Gerry_Hackett77@gmail.com</a>
+            >{contact.email}</a>
           </p>
           <p>
             <span className="desc">Phone: </span>
             <a
-              href="tel: (895) 984-0132"
+              href={`tel: ${contact.phone}`}
               className="desc-value phone-number"
-            >(895) 984-0132
-            </a>
+            >{contact.phone}</a>
           </p>
         </div>
         <div className="address">
@@ -57,31 +73,51 @@ class ClientData extends Component {
           <div className="col">
             <p className="street">
               <span className="desc">Street: </span>
-              <span className="desc-value">1520 Zemlak Cove</span>
+              <span className="desc-value">{address.street}</span>
             </p>
             <p className="city">
               <span className="desc">City: </span>
-              <span className="desc-value">New Devon</span>
+              <span className="desc-value">{address.city}</span>
             </p>
           </div>
 
           <div className="col">
             <p className="country">
               <span className="desc">Country: </span>
-              <span className="desc-value">Guinea-Bissau</span>
+              <span className="desc-value">{address.country}</span>
             </p>
             <p className="zip-code">
               <span className="desc">Zip-code: </span>
-              <span className="desc-value">42586-7898</span>
+              <span className="desc-value">{address.zipCode}</span>
             </p>
           </div>
+          {clientData.mapUrlError &&
+            <p className="error">
+              Cannot load the map
+            </p>
+          }
           <img
             src={clientData.mapUrl}
-            className="client-location-map"
+            className={mapCNames}
           />
         </div>
       </div>
     );
+  }
+
+  render() {
+    let { clientData } = this.props;
+    if (clientData.mapUrl === null) {
+      this.mapLoadingError('map cannot be loaded');
+    }
+
+    if (clientData.data.id === null) { // If client is not choosed
+      return (
+        <p className="hint">Please choose some client</p>
+      );
+    } else {
+      return this.renderData()
+    }
   }
 }
 
@@ -89,25 +125,5 @@ ClientData.propTypes = {
   clientData: PropTypes.object.isRequired,
   createMapUrl: PropTypes.func.isRequired
 }
-
-// general": {
-//       "firstName": "",
-//       "lastName": "",
-//       "avatar": ""
-//     },
-//     "job": {
-//       "company": "",
-//       "title": ""
-//     },
-//     "contact": {
-//       "email": "",
-//       "phone": ""
-//     },
-//     "address": {
-//       "street": "",
-//       "city": "",
-//       "zipCode": "",
-//       "country": ""
-//     }
 
 export default ClientData;

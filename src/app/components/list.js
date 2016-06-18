@@ -52,7 +52,7 @@ class ListOfClients extends Component {
           <div
             key={client.id}
             className={itemCName}
-            onClick={() => this.props.chooseClient(client.id)}
+            onClick={() => this.props.chooseClient(client)}
           >
             <div className="photo-box">
               <img
@@ -75,7 +75,6 @@ class ListOfClients extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className="search-box">

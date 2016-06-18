@@ -50,7 +50,7 @@ function view(state = initialListData.view, action) {
     }
     case CHOOSE_CLIENT: {
       return Object.assign({}, state, {
-        choosedClient: action.id
+        choosedClient: action.client.id
       });
     }
     default: {

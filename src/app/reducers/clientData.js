@@ -1,5 +1,6 @@
 const initialDataStructure = {
   data: {
+    "id": null,
     "general": {
       "firstName": "",
       "lastName": "",
@@ -21,6 +22,7 @@ const initialDataStructure = {
     }
   },
   mapUrl: '',
+  mapUrlError: false
 }
 import {
   CREATE_MAP_URL, CREATING_MAP_URL_ERROR
@@ -34,17 +36,18 @@ export default function clientData(state = initialDataStructure, action) {
   switch (action.type) {
     case CHOOSE_CLIENT: {
       return Object.assign({}, state, {
-        data: action.data
+        data: action.client
       });
     }
     case CREATE_MAP_URL: {
       return Object.assign({}, state, {
-        mapUrl: action.url
+        mapUrl: action.url,
+        mapUrlError: false
       });
     }
     case CREATING_MAP_URL_ERROR: {
       return Object.assign({}, state, {
-        url: null
+        mapUrlError: true
       });
     }
     default: {

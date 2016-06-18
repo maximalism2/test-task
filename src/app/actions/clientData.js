@@ -20,6 +20,7 @@ export const createMapUrl = (street, city, country) => async dispatch => {
   if (response.ok) {
     const responseResult = await response.json();
     if (responseResult.results.length) {
+      // If google found out location set label
       let { results } = responseResult;
       let { lat, lng } = results[0].geometry.location;
 
@@ -30,6 +31,11 @@ export const createMapUrl = (street, city, country) => async dispatch => {
       dispatch({
         type: CREATE_MAP_URL,
         url: urlToReturn
+      });
+    } else {
+      // else, tell that it is unexisting place
+      dispatch({
+        type: CREATING_MAP_URL_ERROR,
       });
     }
   } else {

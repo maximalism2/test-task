@@ -67,7 +67,27 @@
 
   .contacts {
     margin-top: 1rem;
+  }
 
+  .client-location-map {
+    width: 100%;
+    transition: .2s;
+  }
 
+  .no-map {
+    height: 200px;
+    width: 100%;
+    line-height: 200px;
+  }
+
+  .map-error {
+    filter: blur(12px);
+  }
+
+  .hint {
+    margin-top: 41%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: $light-text-color;
   }
 }

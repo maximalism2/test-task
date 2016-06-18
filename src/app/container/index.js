@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import listContainer from './list';
-import dataContainer from './clientData';
+import DataContainer from './clientData';
 
 class MainContainer extends Component {
   loadHanlder(e) {

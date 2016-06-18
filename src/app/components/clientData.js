@@ -1,15 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import * as actionsData from '../actions/clientData';
-import * as actionsList from '../actions/list';
 
-class DataContainer extends Component {
+class ClientData extends Component {
   mapLoadingError(e) {
     console.log('map erorr', e);
   }
 
   render() {
-    let { data } = this.props;
-    if (data.mapUrl === null) {
+    let { clientData } = this.props;
+    if (clientData.mapUrl === null) {
       this.mapLoadingError('map cannot be loaded');
     }
 
@@ -78,7 +76,7 @@ class DataContainer extends Component {
             </p>
           </div>
           <img
-            src={data.mapUrl}
+            src={clientData.mapUrl}
             className="client-location-map"
           />
         </div>
@@ -87,4 +85,29 @@ class DataContainer extends Component {
   }
 }
 
-export default DataContainer;
+ClientData.propTypes = {
+  clientData: PropTypes.object.isRequired,
+  createMapUrl: PropTypes.func.isRequired
+}
+
+// general": {
+//       "firstName": "",
+//       "lastName": "",
+//       "avatar": ""
+//     },
+//     "job": {
+//       "company": "",
+//       "title": ""
+//     },
+//     "contact": {
+//       "email": "",
+//       "phone": ""
+//     },
+//     "address": {
+//       "street": "",
+//       "city": "",
+//       "zipCode": "",
+//       "country": ""
+//     }
+
+export default ClientData;

@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import listContainer from './list';
-import DataContainer from './clientData';
+import { ClientData, ListOfClients } from '../components/';
+
+import * as actionsData from '../actions/clientData';
+import * as actionsList from '../actions/list';
 
 class MainContainer extends Component {
-  loadHanlder(e) {
-    e.preventDefault();
-
-    this.props.dispatch(actionsList.getList());
-  }
-
   render() {
-    let { clientData } = this.props;
+    let { clientData, list, dispatch } = this.props;
+
+    const boundDataActions = bindActionCreators(actionsData, dispatch);
+    const boundListActions = bindActionCreators(actionsList, dispatch);
 
     return (
       <div className="wrapper">
         <div className="card">
           <div className="clients-list">
-            <div className="search-box">
-              <input
-                type="text"
-                placeholder="search"
-                className="client-search"
-              />
-            </div>
-            <div className="list-of-clients">
-              <div className="centered">
-                <p>No clients to show</p>
-                <a
-                  href="/clients.json"
-                  onClick={e => this.loadHanlder(e)}
-                  className="get-clients"
-                >
-                  Load clients
-                </a>
-              </div>
-            </div>
+            <ListOfClients
+              {...boundListActions}
+              list={list}
+            />
           </div>
           <div className="client-content">
-            <DataContainer data={clientData}/>
+            <ClientData
+              {...boundDataActions}
+              clientData={clientData}
+            />
           </div>
         </div>
       </div>

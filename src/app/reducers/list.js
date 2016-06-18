@@ -16,7 +16,8 @@ const initialListData = {
   },
   view: {
     loading: false,
-    loadingError: false
+    loadingError: false,
+    choosedClient: null
   }
 }
 
@@ -45,6 +46,11 @@ function view(state = initialListData.view, action) {
     case GETING_CLIENT_LIST_ERROR: {
       return Object.assign({}, state, {
         error: true
+      });
+    }
+    case CHOOSE_CLIENT: {
+      return Object.assign({}, state, {
+        choosedClient: action.id
       });
     }
     default: {

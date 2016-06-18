@@ -6,9 +6,7 @@ import {
   SEARCH_CLIENT_BY
 } from '../consts/list';
 
-import {
-  read
-} from '../helpers/fetch/';
+import { read } from '../helpers/fetch/';
 
 export const getList = () => async dispatch => {
   dispatch({
@@ -19,8 +17,16 @@ export const getList = () => async dispatch => {
   let url = '/clients.json';
   const response = await read(url);
 
+  // Paste some id to each client
+  let list = (await response.json()).map(client => Object.assign({}, client, {
+    id: Math.round(Math.random() * 100000)
+  }));
+
   if (response.ok) {
-    console.log(await response.json());
+    dispatch({
+      type: GET_CLIENT_LIST,
+      list
+    })
     dispatch({
       type: GETING_LOADING,
       flag: false
@@ -35,3 +41,8 @@ export const getList = () => async dispatch => {
     });
   }
 }
+
+export const chooseClient = id => ({
+  type: CHOOSE_CLIENT,
+  id
+});

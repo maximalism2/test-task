@@ -1,5 +1,5 @@
 .spinner {
-  margin: 60px auto;
+  margin: 15px auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
@@ -38,6 +38,7 @@
 .client-search {
   padding: 10px;
   width: 100%;
+  height: 36px;
   box-sizing: border-box;
   border: 0;
   border-bottom: 1px solid #eee;
@@ -56,6 +57,47 @@
     text-decoration: none; }
     .centered .get-clients:hover {
       text-decoration: underline; }
+
+.clients-list > div {
+  height: 100%; }
+
+.list-of-clients {
+  height: calc(100% - 36px);
+  overflow: auto; }
+  .list-of-clients .client-item {
+    height: 75px;
+    padding: .1px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer; }
+    .list-of-clients .client-item:hover {
+      background: #fafafa; }
+    .list-of-clients .client-item::after {
+      display: block;
+      clear: both; }
+    .list-of-clients .client-item.choosed {
+      background: #f8f8f8; }
+  .list-of-clients .photo-box {
+    width: 30%;
+    height: 100%;
+    float: left; }
+    .list-of-clients .photo-box .small-avatar {
+      height: 50px;
+      border-radius: 50%;
+      display: block;
+      margin: 12.5px auto; }
+  .list-of-clients .text-box {
+    width: 70%;
+    float: left;
+    color: #444; }
+    .list-of-clients .text-box .client-name {
+      margin-bottom: .5rem; }
+    .list-of-clients .text-box .job-title {
+      font-size: .8rem;
+      color: #aaa;
+      margin: 0; }
+
+.error {
+  color: #d00606; }
 
 .client-content {
   box-sizing: border-box;

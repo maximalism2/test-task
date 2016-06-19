@@ -8,7 +8,7 @@
   "scripts": {
     "start": "static dist/",
     "build": "NODE_ENV=production gulp",
-    "hot": "NODE_ENV=development gulp hot",
+    "hot": "NODE_ENV=development gulp hot"
   },
   "dependencies": {
     "bulma": "0.0.26",

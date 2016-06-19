@@ -152,7 +152,7 @@ class ListOfClients extends Component {
           );
         });
       } else {
-        return list.data.searchData.map(client => {
+        return list.data.searchData.length ? list.data.searchData.map(client => {
           let itemCName = cnames({
             "client-item": 1,
             "focused": client.id === view.focused,
@@ -220,7 +220,8 @@ class ListOfClients extends Component {
               </div>
             </div>
           );
-        });
+        })
+        : <p className="empty">Nothing to found</p>
       }
     }
   }

@@ -82,6 +82,9 @@
 .list-of-clients {
   height: calc(100% - 36px);
   overflow: auto; }
+  .list-of-clients .empty {
+    text-align: center;
+    color: #aaa; }
   .list-of-clients .client-item {
     min-height: 75px;
     padding: .1px;

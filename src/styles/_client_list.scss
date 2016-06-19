@@ -62,6 +62,11 @@
   height: calc(100% - 36px);
   overflow: auto;
 
+  .empty {
+    text-align: center;
+    color: $light-text-color;
+  }
+
   .client-item {
     min-height: 75px;
     padding: .1px;

@@ -9,7 +9,6 @@
     "start": "static dist/",
     "build": "NODE_ENV=production gulp",
     "hot": "NODE_ENV=development gulp hot",
-    "test": "./node_modules/mocha/bin/_mocha ./test/*.js"
   },
   "dependencies": {
     "bulma": "0.0.26",

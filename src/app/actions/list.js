@@ -17,7 +17,7 @@ export const getList = () => async dispatch => {
     flag: true
   });
 
-  let url = '/clients.json';
+  let url = 'clients.json';
   const response = await read(url);
 
   // Paste some id to each client
